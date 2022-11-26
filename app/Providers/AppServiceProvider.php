@@ -26,3 +26,4 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+use Illuminate\Support\Facades\Schema;
