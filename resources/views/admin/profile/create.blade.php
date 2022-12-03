@@ -13,7 +13,7 @@
                 <h2>Myプロフィール</h2>
                 <form action="{{ action('Admin\ProfileController@create') }}" method="post" enctype="multipart/form-data">
                    
-		    @if (count($errors) > 0)
+		            @if (count($errors) > 0)
                         <ul>
                             @foreach($errors->all() as $e)
                                 <li>{{ $e }}</li>
@@ -30,17 +30,17 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="gender">性別</label>
                         <div class="col-md-0.5">
-                           <input type="radio" class="form-control" name="gender" value="{{ old('gender') }}">
+                           <input type="radio" class="form-control" name="gender" id="male" value='male'  {{ old('gender') == 'male' ? 'checked' : '' }}>
                         </div>
-			            <label class="col-md-2" for="name">男性</label>
+			            <label class="col-md-2" for="male">男性</label>
                      </div>
 
                     <div class="form-group row">
                         <label class="col-md-2" for="gender"></label>
                         <div class="col-md-0.5">
-                            <input type="radio" class="form-control" name="gender" value="{{ old('gender') }}">
+                            <input type="radio" class="form-control" name="gender" id="female" value='female' {{ old('gender') == 'female' ? 'checked' : '' }}>
                         </div>
-                        <label class="col-md-2" for="name">女性</label>
+                        <label class="col-md-2" for="female">女性</label>
                     </div>
 
                     <div class="form-group row">
