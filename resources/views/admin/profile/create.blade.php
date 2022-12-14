@@ -30,7 +30,7 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="gender">性別</label>
                         <div class="col-md-0.5">
-                           <input type="radio" class="form-control" name="gender" id="male" value='男性'  {{ old('gender') == 'male' ? 'checked' : '' }}>
+                           <input type="radio" class="form-control" name="gender" id="male" value='男性'  {{ old('gender') == '男性' ? 'checked' : '' }}>
                         </div>
 			            <label class="col-md-2" for="male">男性</label>
                      </div>
@@ -38,7 +38,7 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="gender"></label>
                         <div class="col-md-0.5">
-                            <input type="radio" class="form-control" name="gender" id="female" value='女性' {{ old('gender') == 'female' ? 'checked' : '' }}>
+                            <input type="radio" class="form-control" name="gender" id="female" value='女性' {{ old('gender') == '女性' ? 'checked' : '' }}>
                         </div>
                         <label class="col-md-2" for="female">女性</label>
                     </div>
