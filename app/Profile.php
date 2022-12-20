@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    //
     protected $guarded = array('id');
 
     public static $rules = array(
@@ -16,4 +15,11 @@ class Profile extends Model
         'introduction' => 'required',
     );
 
+    // 以下を追記
+    // Newsモデルに関連付けを行う
+    public function profile_histories()
+    {
+        return $this->hasMany('App\Profile_histories');
+
+    }
 }

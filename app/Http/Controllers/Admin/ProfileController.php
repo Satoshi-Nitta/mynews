@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Profile;
+use App\Profile_histories;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -18,12 +20,12 @@ class ProfileController extends Controller
         // バリデーションを行う
         $this->validate($request, Profile::$rules);
   
-        $plofile = new Profile;
+        $profile = new Profile;
         $form = $request->all();
         $gender = $request->input('gender', 'Sally');
 
-        $plofile->fill($form);
-        $plofile->save();
+        $profile->fill($form);
+        $profile->save();
   
         return redirect('admin/profile/create');
     }
@@ -55,17 +57,22 @@ class ProfileController extends Controller
     {
         // Validationをかける
         $this->validate($request, Profile::$rules);
-        // News Modelからデータを取得する
-        $profile = Profile::find($request->id);
-        // 送信されてきたフォームデータを格納する
+        $profile = Profile::find($request->input('id'));
         $profile_form = $request->all();
-        unset($profile_form['_token']);
+
 
         // 該当するデータを上書きして保存する
         $profile->fill($profile_form)->save();
 
+        $profile_history = new Profile_histories;
+        $profile_history->profile_id = $profile->id;
+        $profile_history->edited_at = Carbon::now();
+        $profile_history->save();
+
         return redirect('admin/profile');
     }
+
+
     
     public function delete(Request $request)
     {
