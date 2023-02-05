@@ -42,12 +42,19 @@
         "yargs": "13.2.4"
     },
     "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
         "serve:test": "cross-env NODE_ENV=test gulp serve",
         "serve:dist": "cross-env NODE_ENV=production gulp serve",
         "start": "gulp serve",
         "build": "cross-env NODE_ENV=production gulp",
         "test": "npm run serve:test",
-        "tasks": "gulp --tasks"
+        "tasks": "gulp --tasks",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
     },
     "browserslist": [
         "> 1%",
